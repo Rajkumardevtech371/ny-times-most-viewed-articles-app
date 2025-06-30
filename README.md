@@ -97,7 +97,6 @@ REACT_APP_API_BASE_URL=https://api.nytimes.com/svc/mostpopular/v2
 ## Testing Overview
 
 - Tests are written using **Jest** and **React Testing Library**
-- Test coverage exceeds **90%**
 
 ![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
 
