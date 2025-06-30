@@ -1,1 +1,1 @@
-export {default as ArticleCardContent} from './ArticleCardContent'
+export { default as ArticleCardContent } from "./ArticleCardContent";

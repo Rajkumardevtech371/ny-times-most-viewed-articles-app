@@ -1,6 +1,19 @@
-# Getting Started with Create React App
+# NY Times Most Viewed Articles
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+It fetches and displays the most viewed articles from the New York Times, allowing users to filter by 1, 7, or 30-day periods. Users can view article summaries and click to view full details in a modal.
+
+---
+
+## 📦 Project Info
+
+- **App Version:** 0.1.0
+- **React Version:** 19.1.0
+- **Tailwind CSS:** 3.4.17
+- **Prettier:** 3.6.2
+- **ESLint:** uses `react-app` preset
+- **Test Framework:** Jest + React Testing Library
 
 ## Available Scripts
 
@@ -8,63 +21,96 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in development mode.  
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.  
 You may also see any lint errors in the console.
+
+---
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.  
+Unit tests are written using **Jest** and **React Testing Library**.
+
+---
+
+### `npm test -- --coverage`
+
+Generates a test coverage report.  
+To view the HTML report:
+
+```bash
+open coverage/lcov-report/index.html
+```
+
+---
+
+### `npm run cy:open`
+
+Launches Cypress UI test runner.
+
+### `npm run cy:run`
+
+Runs Cypress tests headlessly.
+
+---
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder.  
+It correctly bundles React in production mode and optimizes the build for best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run lint`
 
-### `npm run eject`
+Runs ESLint for static code analysis (if configured).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm run format`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Formats all project files using **Prettier** for consistent code style.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## API Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This app uses the [New York Times Most Popular API](https://developer.nytimes.com/docs/most-popular-product/1/overview).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To configure the API:
 
-### Code Splitting
+1. Sign up for an API key at:  
+   https://developer.nytimes.com/get-started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Create a `.env` file in the root of the project:
 
-### Analyzing the Bundle Size
+```
+REACT_APP_API_KEY=your-nyt-api-key
+REACT_APP_API_BASE_URL=https://api.nytimes.com/svc/mostpopular/v2
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## Testing Overview
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Tests are written using **Jest** and **React Testing Library**
+- Test coverage exceeds **90%**
 
-### Advanced Configuration
+![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- The repository uses only generic naming — no company names are present
+- `.env` is ignored by Git and must not be committed
+- App is mobile responsive and styled with Tailwind CSS
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+
+MIT

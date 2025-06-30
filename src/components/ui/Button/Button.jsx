@@ -1,20 +1,20 @@
-import React from 'react';
-import styles from './Button.module.css';
+import React from "react";
+import styles from "./Button.module.css";
 
 const Button = ({
   children,
   onClick,
   disabled = false,
-  variant = 'primary',
-  className = '',
-  type = 'button',
+  variant = "primary",
+  className = "",
+  type = "button",
   href = null,
   ...props
 }) => {
   const buttonClass = `
     ${styles.button}
-    ${styles[variant] || ''}
-    ${disabled ? styles.disabled : ''}
+    ${styles[variant] || ""}
+    ${disabled ? styles.disabled : ""}
     ${className}
   `.trim();
 

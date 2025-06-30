@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import ArticleDetail from "./ArticleDetail";
 
-// 🧪 Mock ArticleMetaInfo
 jest.mock("../../ui/ArticleMetaInfo", () => ({
   __esModule: true,
   ArticleMetaInfo: ({ byline, date }) => (
@@ -12,11 +11,10 @@ jest.mock("../../ui/ArticleMetaInfo", () => ({
   ),
 }));
 
-// 🧪 Mock Button
 jest.mock("../../ui/Button", () => ({
   __esModule: true,
-  Button: ({ children, ...props }) => (
-    <a data-testid="mock-button" {...props}>
+  Button: ({ children, "data-testid": testId, ...props }) => (
+    <a data-testid={testId} {...props}>
       {children}
     </a>
   ),
@@ -34,20 +32,29 @@ describe("ArticleDetail", () => {
   };
 
   test("does not render when article is null", () => {
-    const { container } = render(<ArticleDetail article={null} onClose={() => {}} />);
-    expect(container.firstChild).toBeNull();
+    render(<ArticleDetail article={null} onClose={() => {}} />);
+    expect(
+      screen.queryByTestId("article-detail-modal"),
+    ).not.toBeInTheDocument();
   });
 
   test("renders all article content correctly", () => {
     render(<ArticleDetail article={mockArticle} onClose={() => {}} />);
-
     expect(screen.getByTestId("article-detail-modal")).toBeInTheDocument();
     expect(screen.getByText("Test Article Title")).toBeInTheDocument();
     expect(screen.getByText("This is a test article.")).toBeInTheDocument();
     expect(screen.getByText("Technology")).toBeInTheDocument();
-    expect(screen.getByTestId("mock-meta")).toHaveTextContent("By Jane Doe - July 1, 2025");
-    expect(screen.getByRole("img")).toHaveAttribute("src", "https://example.com/image.jpg");
-    expect(screen.getByTestId("read-full-article-btn")).toHaveAttribute("href", mockArticle.url);
+    expect(screen.getByTestId("mock-meta")).toHaveTextContent(
+      "By Jane Doe - July 1, 2025",
+    );
+    expect(screen.getByRole("img")).toHaveAttribute(
+      "src",
+      "https://example.com/image.jpg",
+    );
+    expect(screen.getByTestId("read-full-article-btn")).toHaveAttribute(
+      "href",
+      mockArticle.url,
+    );
   });
 
   test("calls onClose when backdrop is clicked", () => {

@@ -1,1 +1,1 @@
-export {default as ArticleMetaInfo } from './ArticleMetaInfo'
+export { default as ArticleMetaInfo } from "./ArticleMetaInfo";

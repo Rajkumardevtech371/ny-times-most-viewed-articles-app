@@ -7,7 +7,7 @@ describe("Card component", () => {
     render(
       <Card>
         <p>Test content inside card</p>
-      </Card>
+      </Card>,
     );
     expect(screen.getByText("Test content inside card")).toBeInTheDocument();
   });
@@ -22,9 +22,7 @@ describe("Card component", () => {
   });
 
   test("merges additional className from props", () => {
-    render(
-      <Card className="custom-class">Card with extra class</Card>
-    );
+    render(<Card className="custom-class">Card with extra class</Card>);
     const card = screen.getByTestId("card");
     expect(card.className).toMatch(/custom-class/);
   });
@@ -33,7 +31,7 @@ describe("Card component", () => {
     render(
       <Card data-testid="card-id">
         <span>Content</span>
-      </Card>
+      </Card>,
     );
     expect(screen.getByTestId("card-id")).toBeInTheDocument();
   });

@@ -22,9 +22,7 @@ const ArticleCardContent = ({ article }) => {
 
         <div className="flex flex-col sm:flex-row sm:items-center text-sm text-gray-600 gap-2 sm:space-x-4">
           {article.byline && (
-            <IconText icon={User}>
-              {article.byline.replace("By ", "")}
-            </IconText>
+            <IconText icon={User}>{article.byline.replace("By ", "")}</IconText>
           )}
           <IconText icon={Calendar}>{article.getFormattedDate()}</IconText>
         </div>

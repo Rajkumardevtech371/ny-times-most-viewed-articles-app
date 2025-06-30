@@ -1,1 +1,1 @@
-export {default as PeriodSelector} from './PeriodSelector'
+export { default as PeriodSelector } from "./PeriodSelector";

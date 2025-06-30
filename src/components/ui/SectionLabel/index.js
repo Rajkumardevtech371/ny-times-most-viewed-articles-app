@@ -1,1 +1,1 @@
-export {default as SectionLable} from './SectionLabel'
+export { default as SectionLable } from "./SectionLabel";

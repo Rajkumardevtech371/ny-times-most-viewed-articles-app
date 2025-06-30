@@ -1,13 +1,12 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Articles from "./Articles";
+import { useArticles } from "../../../hooks";
 
-// 🧪 Mock useArticles hook
 jest.mock("../../../hooks", () => ({
   useArticles: jest.fn(),
 }));
 
-// 🧪 Mock child components
 jest.mock("../../ui/LoadingSpinner", () => ({
   LoadingSpinner: () => <div data-testid="loading-spinner">Loading...</div>,
 }));
@@ -49,8 +48,6 @@ jest.mock("../ArticleDetail", () => ({
   ),
 }));
 
-import { useArticles } from "../../../hooks";
-
 describe("Articles component", () => {
   const mockRefetch = jest.fn();
   const mockSetPeriod = jest.fn();
@@ -79,7 +76,6 @@ describe("Articles component", () => {
       setPeriod: mockSetPeriod,
       refetch: mockRefetch,
     });
-
     render(<Articles />);
     expect(screen.getByTestId("loading-spinner")).toBeInTheDocument();
   });
@@ -93,10 +89,10 @@ describe("Articles component", () => {
       setPeriod: mockSetPeriod,
       refetch: mockRefetch,
     });
-
     render(<Articles />);
-    expect(screen.getByTestId("error-message")).toHaveTextContent("Network error");
-
+    expect(screen.getByTestId("error-message")).toHaveTextContent(
+      "Network error",
+    );
     fireEvent.click(screen.getByText("Retry"));
     expect(mockRefetch).toHaveBeenCalledWith(1);
   });
@@ -110,7 +106,6 @@ describe("Articles component", () => {
       setPeriod: mockSetPeriod,
       refetch: mockRefetch,
     });
-
     render(<Articles />);
     expect(screen.getByText(/No articles found/i)).toBeInTheDocument();
   });
@@ -124,14 +119,13 @@ describe("Articles component", () => {
       setPeriod: mockSetPeriod,
       refetch: mockRefetch,
     });
-
     render(<Articles />);
-
     const card = screen.getByTestId("article-card-0");
     expect(card).toHaveTextContent("Test Article");
-
     fireEvent.click(card);
-    expect(screen.getByTestId("article-detail")).toHaveTextContent("Test Article");
+    expect(screen.getByTestId("article-detail")).toHaveTextContent(
+      "Test Article",
+    );
   });
 
   test("changes period via PeriodSelector", () => {
@@ -143,7 +137,6 @@ describe("Articles component", () => {
       setPeriod: mockSetPeriod,
       refetch: mockRefetch,
     });
-
     render(<Articles />);
     fireEvent.click(screen.getByText("7 Days"));
     expect(mockSetPeriod).toHaveBeenCalledWith(7);

@@ -21,7 +21,7 @@ describe("Button component", () => {
     render(
       <Button onClick={handleClick} disabled>
         Disabled
-      </Button>
+      </Button>,
     );
 
     const btn = screen.getByText("Disabled");
@@ -40,7 +40,7 @@ describe("Button component", () => {
     render(
       <Button href="https://example.com" target="_blank">
         Go to Link
-      </Button>
+      </Button>,
     );
     const link = screen.getByText("Go to Link");
     expect(link.tagName).toBe("A");

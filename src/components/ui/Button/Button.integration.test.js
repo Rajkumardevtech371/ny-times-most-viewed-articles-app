@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Button from "./Button";
 
-
 const ButtonWrapper = ({ label = "Submit" }) => {
   const handleClick = jest.fn();
   return <Button onClick={handleClick}>{label}</Button>;

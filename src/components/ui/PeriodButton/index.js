@@ -1,1 +1,1 @@
-export {default as PeriodButton} from './PeriodButton'
+export { default as PeriodButton } from "./PeriodButton";

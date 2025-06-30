@@ -3,11 +3,12 @@ import { useArticles } from "../../../hooks";
 import { LoadingSpinner } from "../../ui/LoadingSpinner";
 import { ArticleCard } from "../ArticleCard";
 import { ErrorMessage } from "../ErrorMessage";
-import {PeriodSelector} from "../PeriodSelector";
+import { PeriodSelector } from "../PeriodSelector";
 import { ArticleDetail } from "../ArticleDetail";
 
 const Articles = () => {
-  const { articles, loading, error, period, setPeriod, refetch } = useArticles();
+  const { articles, loading, error, period, setPeriod, refetch } =
+    useArticles();
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   const handlePeriodChange = (newPeriod) => {
@@ -17,11 +18,11 @@ const Articles = () => {
 
   return (
     <>
-       <PeriodSelector
-          period={period}
-          onPeriodChange={handlePeriodChange}
-          disabled={loading}
-        />
+      <PeriodSelector
+        period={period}
+        onPeriodChange={handlePeriodChange}
+        disabled={loading}
+      />
 
       {loading && <LoadingSpinner />}
 
@@ -45,12 +46,12 @@ const Articles = () => {
             testId={`article-card-${index}`}
           />
         ))}
-         {selectedArticle && (
-          <ArticleDetail
-            article={selectedArticle}
-            onClose={() => setSelectedArticle(null)}
-          />
-        )}
+      {selectedArticle && (
+        <ArticleDetail
+          article={selectedArticle}
+          onClose={() => setSelectedArticle(null)}
+        />
+      )}
     </>
   );
 };

@@ -18,7 +18,7 @@ jest.mock("../SectionLabel/SectionLabel", () => ({
   default: ({ text }) => <span data-testid="section-label">{text}</span>,
 }));
 
-// Mock Lucide icons to render dummy elements 
+// Mock Lucide icons to render dummy elements
 jest.mock("lucide-react", () => ({
   ChevronRight: () => <svg data-testid="chevron-icon" />,
   Calendar: () => <svg data-testid="calendar-icon" />,
@@ -39,11 +39,16 @@ describe("ArticleCardContent", () => {
     render(<ArticleCardContent article={mockArticle} />);
 
     expect(screen.getByText(/test article title/i)).toBeInTheDocument();
-    expect(screen.getByText(/this is the article summary/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/this is the article summary/i),
+    ).toBeInTheDocument();
     expect(screen.getByTestId("section-label")).toHaveTextContent("Technology");
     expect(screen.getByText(/jane doe/i)).toBeInTheDocument();
     expect(screen.getByText(/july 1, 2025/i)).toBeInTheDocument();
-    expect(screen.getByRole("img")).toHaveAttribute("src", "https://example.com/image.jpg");
+    expect(screen.getByRole("img")).toHaveAttribute(
+      "src",
+      "https://example.com/image.jpg",
+    );
     expect(screen.getByTestId("chevron-icon")).toBeInTheDocument();
   });
 
