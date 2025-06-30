@@ -1,6 +1,6 @@
 import React from "react";
-import { Card } from "../../ui/Card";
 import { ArticleCardContent } from "../../ui/ArticleCardContent";
+import Card from "../../ui/Card/Card";
 
 const ArticleCard = ({ article, onClick, testId }) => {
   return (

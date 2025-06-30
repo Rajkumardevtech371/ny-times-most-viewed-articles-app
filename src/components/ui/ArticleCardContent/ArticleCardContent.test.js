@@ -18,7 +18,7 @@ jest.mock("../SectionLabel/SectionLabel", () => ({
   default: ({ text }) => <span data-testid="section-label">{text}</span>,
 }));
 
-// Mock Lucide icons to render dummy elements
+// Mock Lucide icons to render dummy elements 
 jest.mock("lucide-react", () => ({
   ChevronRight: () => <svg data-testid="chevron-icon" />,
   Calendar: () => <svg data-testid="calendar-icon" />,

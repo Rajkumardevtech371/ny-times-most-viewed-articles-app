@@ -3,7 +3,7 @@ import { useArticles } from "../../../hooks";
 import { LoadingSpinner } from "../../ui/LoadingSpinner";
 import { ArticleCard } from "../ArticleCard";
 import { ErrorMessage } from "../ErrorMessage";
-import PeriodSelector from "../PeriodSelector/PeriodSelector";
+import {PeriodSelector} from "../PeriodSelector";
 import { ArticleDetail } from "../ArticleDetail";
 
 const Articles = () => {
