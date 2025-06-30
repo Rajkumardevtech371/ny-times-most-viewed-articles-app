@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { useArticles } from "../../../hooks";
 import { LoadingSpinner } from "../../ui/LoadingSpinner";
 import { ArticleCard } from "../ArticleCard";
 import { ErrorMessage } from "../ErrorMessage";
 import PeriodSelector from "../PeriodSelector/PeriodSelector";
+import { ArticleDetail } from "../ArticleDetail";
 
 const Articles = () => {
   const { articles, loading, error, period, setPeriod, refetch } = useArticles();
+  const [selectedArticle, setSelectedArticle] = useState(null);
 
   const handlePeriodChange = (newPeriod) => {
     setPeriod(newPeriod);
@@ -37,10 +40,17 @@ const Articles = () => {
         articles.map((article, index) => (
           <ArticleCard
             key={article.id}
+            onClick={setSelectedArticle}
             article={article}
             testId={`article-card-${index}`}
           />
         ))}
+         {selectedArticle && (
+          <ArticleDetail
+            article={selectedArticle}
+            onClose={() => setSelectedArticle(null)}
+          />
+        )}
     </>
   );
 };

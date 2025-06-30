@@ -1,21 +1,36 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-const Button = ({ 
-  children, 
-  onClick, 
-  disabled = false, 
-  variant = 'primary', 
-  className = '', 
+const Button = ({
+  children,
+  onClick,
+  disabled = false,
+  variant = 'primary',
+  className = '',
   type = 'button',
-  ...props 
+  href = null,
+  ...props
 }) => {
   const buttonClass = `
-    ${styles.button} 
-    ${styles[variant]} 
-    ${disabled ? styles.disabled : ''} 
+    ${styles.button}
+    ${styles[variant] || ''}
+    ${disabled ? styles.disabled : ''}
     ${className}
   `.trim();
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={buttonClass}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
     <button
