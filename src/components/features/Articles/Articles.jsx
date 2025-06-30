@@ -2,12 +2,24 @@ import { useArticles } from "../../../hooks";
 import { LoadingSpinner } from "../../ui/LoadingSpinner";
 import { ArticleCard } from "../ArticleCard";
 import { ErrorMessage } from "../ErrorMessage";
+import PeriodSelector from "../PeriodSelector/PeriodSelector";
 
 const Articles = () => {
-  const { articles, loading, error, period, refetch } = useArticles();
+  const { articles, loading, error, period, setPeriod, refetch } = useArticles();
+
+  const handlePeriodChange = (newPeriod) => {
+    setPeriod(newPeriod);
+    refetch(newPeriod);
+  };
 
   return (
     <>
+       <PeriodSelector
+          period={period}
+          onPeriodChange={handlePeriodChange}
+          disabled={loading}
+        />
+
       {loading && <LoadingSpinner />}
 
       {error && (
